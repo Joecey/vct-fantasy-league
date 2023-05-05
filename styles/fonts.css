@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=DM+Sans&display=swap");
+
+.vct-font {
+	font-family: "Anton", sans-serif;
+}
+
+.vct-font-normal{
+	font-family: 'DM Sans', sans-serif;
+}
