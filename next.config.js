@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	images: {
-		domains: ["owcdn.net"],
+		domains: ["owcdn.net", "static.wikia.nocookie.net"],
 	},
 };
 

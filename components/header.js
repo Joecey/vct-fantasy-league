@@ -12,6 +12,7 @@ export default function Header() {
 				<Image
 					src={VALORANT}
 					className="valorant-icon group-hover:rotate-0"
+					alt="White Valorant Logo"
 				/>
 				<h1 className="text-3xl uppercase vct-font font-bold text-white">
 					VCT Fantasy League
@@ -40,13 +41,14 @@ export default function Header() {
 
 function SmallPlayer() {
 	return (
-		<div className="h-full aspect-square border-2 border-white drop-shadow-lg mr-4 hover:rounded-xl transition-all ease-in-out group">
+		<div className="h-full aspect-square border-2 border-white drop-shadow-lg mr-4 hover:rounded-3xl transition-all ease-in-out group">
 			<Image
 				src={"https://owcdn.net/img/6416950ce6638.png"}
 				// src={JETT}
 				width={500}
 				height={500}
-				className="overflow-hidden w-full h-full object-cover object-top group-hover:rounded-xl transition-all ease-in-out bg-white"
+				className="overflow-hidden w-full h-full object-cover object-top group-hover:rounded-3xl transition-all ease-in-out bg-white"
+				alt={"TenZ, Sentinels"}
 			/>
 		</div>
 	);
