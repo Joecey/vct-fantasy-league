@@ -53,6 +53,7 @@ export default function PlayerBanners(props) {
 function SingleBanner(props) {
 	return (
 		<div
+			key={props.player}
 			className="grid w-64 h-128 bg-gradient-to-b from-white/30 mx-4 mt-12 border-t-4 border-t-white hover:from-teal-500/30
             hover:border-teal-300/50 hover:scale-105 transition-all duration-500 ease-in-out shadow-lg 
             hover:shadow-white/50 hover:shadow-xl fade-in-mid"
@@ -88,6 +89,7 @@ function SingleBanner(props) {
 function SingleBanner_out(props) {
 	return (
 		<div
+			key={props.player}
 			className="grid w-64 h-128 bg-gradient-to-b from-white/30 mx-4 mt-12 border-t-4 border-t-white hover:from-teal-500/30
             hover:border-teal-300/50 scale-95 hover:scale-100 transition-all duration-500 ease-in-out shadow-lg 
             hover:shadow-white/50 hover:shadow-xl fade-in-end bg-"
@@ -123,6 +125,7 @@ function SingleBanner_out(props) {
 function SingleBanner_mid(props) {
 	return (
 		<div
+			key={props.player}
 			className="grid w-64 h-128 bg-gradient-to-b from-white/30 mx-4 mt-12 border-t-4 border-t-white hover:from-teal-500/30
             hover:border-teal-300/50 scale-105 hover:scale-110 transition-all duration-500 ease-in-out shadow-lg 
             hover:shadow-white/50 hover:shadow-xl fade-in-start"
