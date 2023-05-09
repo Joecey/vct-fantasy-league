@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import "../styles/globals.css";
 import "../styles/fonts.css";
 import "../styles/Tailwind.css";
@@ -5,7 +7,19 @@ import Image from "next/image";
 import JETT from "../public/valorant-go-vol-1-jett-player-card.png";
 import VALORANT from "../public/vct-logo.png";
 
-export default function Header() {
+export default function Header(props) {
+	const [team, setTeam] = useState("");
+
+	// we will be passing this function back up towards the parent page
+	function handleInput(e) {
+		// prevent page refresh
+		e.preventDefault();
+		const adj_team = team.toLowerCase();
+		props.sendQuery(adj_team);
+		console.log("form submitted ", adj_team);
+		// onQuery(adj_team);
+	}
+
 	return (
 		<div className="flex justify-between items-center h-32  ">
 			<div className="ml-4 flex justify-center items-center group">
@@ -19,13 +33,24 @@ export default function Header() {
 				</h1>
 			</div>
 
-			<div className=" ml-28">
-				<h1 className="text-5xl font-bold text-center uppercase text-white  mb-0 vct-font">
-					Team Name
-				</h1>
-				<p className="text-lg uppercase text-center text-white mt-0 vct-font-normal">
-					searching...
-				</p>
+			<div className="ml-28">
+				{/* here we're going to use the form to handle the onClick event */}
+				<form className="flex flex-col " onSubmit={handleInput}>
+					<input
+						type="text"
+						placeholder="Enter team here..."
+						value={team}
+						onChange={(e) => setTeam(e.target.value)}
+						className="text-5xl font-bold text-center uppercase text-white vct-font bg-white/20 shadow-xl focus:outline-none
+					focus:shadow-white focus:shadow-md transition-shadow duration-500"
+					/>
+					<button
+						type="submit"
+						className="text-lg uppercase text-center text-white mt-0 vct-font-normal"
+					>
+						Find team!
+					</button>
+				</form>
 			</div>
 
 			<div className="flex justify-center h-16 mr-8 ">

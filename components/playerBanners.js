@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import "../styles/globals.css";
 import "../styles/fonts.css";
 import "../styles/Tailwind.css";
@@ -9,11 +10,33 @@ const pb = new PocketBase("http://127.0.0.1:8090");
 
 // make this a server component, render on the server and data fetch inside of them
 // using data from pocketbase, map data accordingly
-export default async function PlayerBanners() {
-	const fantasy_team = await getTeam("sentinels");
-	console.log(typeof fantasy_team);
 
-	const { player1, player2, player3, player4, player5 } = fantasy_team || {};
+// from here, we will call from PB using the Javascript SDK
+// we're going to be mapping the players and team name from here
+
+async function getTeam(teamName) {
+	// use SDK to get matching record from collection
+	const record = await pb
+		.collection("teams")
+		.getFirstListItem(`team_name="${teamName}"`);
+	console.log("here pb");
+	return record;
+}
+
+export default function PlayerBanners(props) {
+	const [team, setTeam] = useState({});
+
+	let team_name = props.teamName;
+
+	useEffect(() => {
+		getTeam(team_name).then(function (recordGet) {
+			const test = recordGet.player1;
+			console.log(test);
+			setTeam(recordGet);
+		}, []);
+	});
+
+	const { player1, player2, player3, player4, player5 } = team;
 
 	return (
 		<div className="flex justify-center">
@@ -24,19 +47,6 @@ export default async function PlayerBanners() {
 			<SingleBanner_out player={player5} />
 		</div>
 	);
-}
-
-// from here, we will call from PB using the Javascript SDK
-// we're going to be mapping the players and team name from here
-
-// ! for now we brute force this, but we need to eventuall make this a variable function
-async function getTeam(teamName) {
-	// use SDK to get matching record from collection
-	const record = await pb
-		.collection("teams")
-		.getFirstListItem(`team_name="${teamName}"`);
-
-	return record;
 }
 
 // pass in notes as a prop
@@ -80,7 +90,7 @@ function SingleBanner_out(props) {
 		<div
 			className="grid w-64 h-128 bg-gradient-to-b from-white/30 mx-4 mt-12 border-t-4 border-t-white hover:from-teal-500/30
             hover:border-teal-300/50 scale-95 hover:scale-100 transition-all duration-500 ease-in-out shadow-lg 
-            hover:shadow-white/50 hover:shadow-xl fade-in-end"
+            hover:shadow-white/50 hover:shadow-xl fade-in-end bg-"
 		>
 			<div className="overflow-hidden object-cover w-full h-full p-4 object-top ">
 				<Image
