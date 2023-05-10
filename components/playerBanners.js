@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import getTeam from "./teamCall";
 import "../styles/globals.css";
 import "../styles/fonts.css";
 import "../styles/Tailwind.css";
@@ -14,27 +15,20 @@ const pb = new PocketBase("http://127.0.0.1:8090");
 // from here, we will call from PB using the Javascript SDK
 // we're going to be mapping the players and team name from here
 
-async function getTeam(teamName) {
-	// use SDK to get matching record from collection
-	const record = await pb
-		.collection("teams")
-		.getFirstListItem(`team_name="${teamName}"`);
-	console.log("here pb");
-	return record;
-}
-
 export default function PlayerBanners(props) {
 	const [team, setTeam] = useState({});
 
 	let team_name = props.teamName;
 
 	useEffect(() => {
-		getTeam(team_name).then(function (recordGet) {
+		// console.log(getTeam(team_name, pb));
+		getTeam(team_name, pb).then(function (recordGet) {
 			const test = recordGet.player1;
 			console.log(test);
 			setTeam(recordGet);
-		}, []);
-	});
+		});
+		// setTeam(getTeam(team_name, pb));
+	}, [team_name]);
 
 	const { player1, player2, player3, player4, player5 } = team;
 
