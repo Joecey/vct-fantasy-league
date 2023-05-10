@@ -42,11 +42,12 @@ export default function Header(props) {
 						value={team}
 						onChange={(e) => setTeam(e.target.value)}
 						className="text-5xl font-bold text-center uppercase text-white vct-font bg-white/20 shadow-xl focus:outline-none
-					focus:shadow-white focus:shadow-md transition-shadow duration-500"
+					focus:shadow-white focus:shadow-md transition-shadow duration-500 mt-4"
 					/>
 					<button
 						type="submit"
-						className="text-lg uppercase text-center text-white mt-0 vct-font-normal"
+						className="text-lg uppercase text-center text-white mt-4 vct-font-normal transition-colors duration-300 transform
+						bg-blue-600/20 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
 					>
 						Find team!
 					</button>
