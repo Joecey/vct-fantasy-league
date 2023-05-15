@@ -35,7 +35,10 @@ export default function Header(props) {
 
 			<div className="ml-28">
 				{/* here we're going to use the form to handle the onClick event */}
-				<form className="flex flex-col " onSubmit={handleInput}>
+				<form
+					className="flex flex-col items-center"
+					onSubmit={handleInput}
+				>
 					<input
 						type="text"
 						placeholder="Enter team here..."
@@ -46,7 +49,7 @@ export default function Header(props) {
 					/>
 					<button
 						type="submit"
-						className="text-lg uppercase text-center text-white mt-4 vct-font-normal transition-colors duration-300 transform
+						className="w-1/4  text-lg uppercase text-center text-white mt-4 vct-font-normal transition-colors duration-300 transform
 						bg-blue-600/20 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
 					>
 						Find team!
